@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURA CREATIVE | Digital Studio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700;800;900&display=swap');
+
+        :root {
+            --bg: #050505;
+            --accent: #0070FF;
+            --glass: rgba(255, 255, 255, 0.03);
+            --text: #F5F5F7;
+            --dim-text: #A1A1A6;
+            --border: rgba(255, 255, 255, 0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+
+        body { background-color: var(--bg); color: var(--text); line-height: 1.8; scroll-behavior: smooth; }
+
+        .logo { font-weight: 900; font-size: 1.4rem; letter-spacing: 4px; text-transform: uppercase; color: var(--text); }
+        .logo span { font-weight: 300; color: var(--accent); margin-left: 5px; }
+
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 25px 8%; position: fixed; width: 100%; top: 0; z-index: 1000;
+            background: rgba(5, 5, 5, 0.8); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border);
+        }
+
+        .nav-links { list-style: none; display: flex; gap: 40px; }
+        .nav-links a { text-decoration: none; color: var(--dim-text); font-size: 0.75rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; transition: 0.3s; }
+        .nav-links a:hover { color: var(--accent); }
+
+        .hero {
+            height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
+            background: radial-gradient(circle at center, #111 0%, #050505 100%);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 900; letter-spacing: 12px; text-transform: uppercase;
+            margin-bottom: 20px; white-space: nowrap; 
+            background: linear-gradient(to bottom, #fff, #888); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+
+        .hero p { color: var(--accent); font-size: 0.9rem; letter-spacing: 6px; text-transform: uppercase; margin-bottom: 40px; font-weight: 500; }
+
+        /* --- ABOUT SECTION --- */
+        .about-section { 
+            padding: 140px 8%; 
+            display: grid; 
+            grid-template-columns: 1.2fr 0.8fr; 
+            gap: 100px; 
+            align-items: center; 
+            border-bottom: 1px solid var(--border);
+        }
+
+        .about-text .badge {
+            display: inline-block;
+            padding: 5px 15px;
+            background: rgba(0, 112, 255, 0.1);
+            color: var(--accent);
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        
+        .about-text h2 { 
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 800; 
+            line-height: 1.1;
+            letter-spacing: -1.5px; 
+            margin-bottom: 25px;
+        }
+        
+        .about-text p { color: var(--dim-text); font-size: 1.15rem; font-weight: 300; margin-bottom: 25px; max-width: 580px; }
+
+        .about-text .highlight { color: var(--text); font-weight: 600; border-bottom: 1px solid var(--accent); }
+
+        .stat-card { 
+            background: var(--glass); padding: 40px; border-radius: 24px; border: 1px solid var(--border); transition: 0.4s; margin-bottom: 20px; text-decoration: none; display: block;
+        }
+        .stat-card:hover { border-color: var(--accent); transform: scale(1.02); }
+        .stat-card h3 { font-size: 3rem; font-weight: 800; color: var(--accent); line-height: 1; }
+        .stat-card p { font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--dim-text); }
+
+        /* --- UPDATED SERVICES SECTION --- */
+        .services-section { padding: 120px 8%; text-align: center; }
+        .section-header h2 { font-size: 2rem; letter-spacing: 8px; font-weight: 800; text-transform: uppercase; margin-bottom: 60px; color: var(--text); }
+        
+        .services-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+            gap: 25px; 
+        }
+
+        .service-card { 
+            background: var(--glass); 
+            padding: 50px 35px; 
+            border: 1px solid var(--border); 
+            border-radius: 20px; 
+            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            text-align: left;
+        }
+
+        .service-card:hover { 
+            border-color: var(--accent); 
+            background: rgba(0, 112, 255, 0.02);
+            transform: translateY(-10px); 
+        }
+
+        .service-card h3 { font-size: 1.6rem; font-weight: 700; margin-bottom: 10px; color: var(--text); }
+        .service-card .price { font-size: 2.2rem; font-weight: 800; color: var(--accent); margin-bottom: 25px; }
+
+        .service-features { list-style: none; color: var(--dim-text); margin-bottom: 35px; font-size: 0.95rem; }
+        .service-features li { margin-bottom: 15px; display: flex; align-items: center; }
+        .service-features li::before { content: "→"; color: var(--accent); margin-right: 12px; font-weight: bold; }
+
+        /* REVIEWS & PORTFOLIO */
+        .reviews-section { padding: 120px 8%; background: rgba(255,255,255,0.01); text-align: center; }
+        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 50px; }
+        .review-card { background: var(--glass); padding: 40px 30px; border-radius: 16px; border: 1px solid var(--border); text-align: left; }
+        
+        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 25px; padding: 0 8% 120px; }
+        .project-card { height: 450px; background: #0f0f0f; position: relative; overflow: hidden; display: flex; align-items: flex-end; padding: 40px; text-decoration: none; color: white; border: 1px solid var(--border); border-radius: 12px; }
+        .project-card img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.4; transition: 0.8s; }
+        .project-card:hover img { opacity: 0.7; transform: scale(1.1); }
+
+        /* CONTACT */
+        .contact { padding: 120px 8%; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+        .contact-info h2 { font-size: 4rem; font-weight: 800; letter-spacing: -2px; color: var(--text); line-height: 1; }
+        .form-group { background: var(--glass); padding: 50px; border-radius: 20px; border: 1px solid var(--border); }
+        input, textarea { width: 100%; padding: 15px; background: transparent; border: none; border-bottom: 1px solid #333; color: var(--text); margin-bottom: 30px; outline: none; font-size: 1rem; }
+        input:focus { border-bottom-color: var(--accent); }
+        .submit-btn { background: var(--text); color: var(--bg); border: none; padding: 18px 40px; font-weight: 800; text-transform: uppercase; letter-spacing: 3px; cursor: pointer; width: 100%; transition: 0.4s; border-radius: 8px; }
+        .submit-btn:hover { background: var(--accent); color: white; }
+
+        .social-links { margin-top: 30px; display: flex; gap: 25px; justify-content: flex-start; }
+        .social-links a { color: var(--text); font-size: 1.6rem; transition: 0.3s; opacity: 0.6; }
+        .social-links a:hover { color: var(--accent); opacity: 1; transform: translateY(-5px); }
+
+        footer { padding: 80px 8% 40px; border-top: 1px solid var(--border); text-align: center; color: var(--dim-text); }
+        .developer-credit { margin-top: 40px; padding-top: 30px; border-top: 1px solid var(--border); font-size: 0.85rem; letter-spacing: 1.5px; }
+        .developer-credit b { color: var(--accent); }
+
+        @media (max-width: 1024px) { .about-section, .contact { grid-template-columns: 1fr; gap: 60px; } }
+        @media (max-width: 768px) { .nav-links { display: none; } .hero h1 { white-space: normal; font-size: 3rem; } }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">AURA<span>CREATIVE</span></div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#work">Work</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <h1>AURA CREATIVE</h1>
+        <p>Innovation & Design Excellence</p>
+    </section>
+
+    <section class="about-section" id="about">
+        <div class="about-text">
+            <span class="badge">Digital Studio 2026</span>
+            <h2>Crafting the Digital Future Today</h2>
+            <p>We are a forward-thinking digital studio specializing in creating <span class="highlight">high-performance websites</span> and unique brand identities.</p>
+            <p>Led by <b>Ashikul Islam</b>, a Software Engineering student at <b>DIU</b>, we combine technical precision with creative vision to help businesses scale.</p>
+        </div>
+        <div class="about-stats">
+            <a href="#work" class="stat-card">
+                <h3>41+</h3>
+                <p>Batch Projects Completed</p>
+            </a>
+            <div class="stat-card">
+                <h3>99%</h3>
+                <p>Code Quality Score</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="services-section" id="services">
+        <div class="section-header"><h2>Our Services</h2></div>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Starter</h3>
+                <div class="price">$499</div>
+                <ul class="service-features">
+                    <li>Single Page Design</li>
+                    <li>Responsive Layout</li>
+                    <li>Basic SEO Strategy</li>
+                </ul>
+                <a href="#contact" class="submit-btn" style="text-decoration:none; display:inline-block; font-size: 0.8rem;">Select Plan</a>
+            </div>
+
+            <div class="service-card" style="border-color: var(--accent); background: rgba(0,112,255,0.02);">
+                <h3 style="color: var(--accent);">Professional</h3>
+                <div class="price">$999</div>
+                <ul class="service-features">
+                    <li>Full Website Build</li>
+                    <li>Custom UI/UX Design</li>
+                    <li>Advanced SEO Setup</li>
+                </ul>
+                <a href="#contact" class="submit-btn" style="text-decoration:none; display:inline-block; background: var(--accent); color: white; font-size: 0.8rem;">Select Plan</a>
+            </div>
+
+            <div class="service-card">
+                <h3>Enterprise</h3>
+                <div class="price">Custom</div>
+                <ul class="service-features">
+                    <li>E-commerce Solutions</li>
+                    <li>Brand Growth Strategy</li>
+                    <li>24/7 Dedicated Support</li>
+                </ul>
+                <a href="#contact" class="submit-btn" style="text-decoration:none; display:inline-block; font-size: 0.8rem;">Inquiry</a>
+            </div>
+
+            <div class="service-card">
+                <h3 style="color: var(--accent);">Custom App Dev</h3>
+                <div class="price">Quote</div>
+                <ul class="service-features">
+                    <li>Scalable Web Apps</li>
+                    <li>API Integrations</li>
+                    <li>Backend Architecture</li>
+                </ul>
+                <a href="#contact" class="submit-btn" style="text-decoration:none; display:inline-block; font-size: 0.8rem;">Get Quote</a>
+            </div>
+
+            <div class="service-card">
+                <h3>UI/UX Design</h3>
+                <div class="price">$299</div>
+                <ul class="service-features">
+                    <li>Modern Prototypes</li>
+                    <li>User Journey Mapping</li>
+                    <li>Mobile-First Design</li>
+                </ul>
+                <a href="#contact" class="submit-btn" style="text-decoration:none; display:inline-block; font-size: 0.8rem;">Explore</a>
+            </div>
+
+            <div class="service-card">
+                <h3>SEO Strategy</h3>
+                <div class="price">$199</div>
+                <ul class="service-features">
+                    <li>Keyword Research</li>
+                    <li>Google Ranking Growth</li>
+                    <li>Monthly Performance</li>
+                </ul>
+                <a href="#contact" class="submit-btn" style="text-decoration:none; display:inline-block; font-size: 0.8rem;">Get Started</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="reviews-section">
+        <div class="section-header"><h2>Client Feedback</h2></div>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <p>"Aura Creative transformed our brand. Their attention to detail is unmatched."</p>
+                <h4>— Sarah Johnson, CEO</h4>
+            </div>
+            <div class="review-card">
+                <p>"The best UI/UX experience we've had. Fast, reliable, and very professional."</p>
+                <h4>— Alex Chen, Founder</h4>
+            </div>
+            <div class="review-card">
+                <p>"Highly recommended for any software development projects."</p>
+                <h4>— Michael Smith, Tech Lead</h4>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-header" style="text-align: center; padding-top: 100px;" id="work">
+        <h2>Selected Work</h2>
+    </div>
+    <section class="portfolio-grid">
+        <a href="#" class="project-card">
+            <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80" alt="Work">
+            <div class="project-content"><h3>Cyber Interface</h3><p style="color: var(--accent); font-weight: 600;">UI/UX Design</p></div>
+        </a>
+        <a href="#" class="project-card">
+            <img src="https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?auto=format&fit=crop&w=800&q=80" alt="Work">
+            <div class="project-content"><h3>Minimalist Branding</h3><p style="color: var(--accent); font-weight: 600;">Identity</p></div>
+        </a>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="contact-info">
+            <h2>Let's build <br> the future.</h2>
+            <div style="margin-top: 40px;">
+                <p style="color: var(--dim-text); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px;">Email Us</p>
+                <a href="mailto:ashikulislamsmall@gmail.com" style="color: var(--accent); text-decoration: none; font-size: 1.2rem; font-weight: 700;">ashikulislamsmall@gmail.com</a>
+                <p style="color: var(--dim-text); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; margin-top: 25px;">Call Us</p>
+                <a href="tel:01957505592" style="color: var(--accent); text-decoration: none; font-size: 1.2rem; font-weight: 700;">+88 01957505592</a>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/share/17MTVtKWJj/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/ashikaeby?igsh=aXM1MXJnM2xxeWpt&utm_source=qr" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <form>
+                <input type="text" placeholder="Your Name">
+                <input type="email" placeholder="Your Email">
+                <textarea rows="4" placeholder="Tell us about your project"></textarea>
+                <button class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="logo">AURA<span>CREATIVE</span></div>
+        <div class="developer-credit">
+            DESIGNED & DEVELOPED BY <b>Ashikul Islam</b> <br>
+            DEPT. OF SOFTWARE ENGINEERING, 41 BATCH <br>
+            DAFFODIL INTERNATIONAL UNIVERSITY
+        </div>
+        <p style="margin-top: 30px; opacity: 0.2; font-size: 0.7rem; letter-spacing: 2px;">&copy; 2026 AURA CREATIVE STUDIO. ALL RIGHTS RESERVED.</p>
+    </footer>
+
+</body>
+</html>
