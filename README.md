@@ -1,0 +1,1 @@
+# ash_info_Tech
